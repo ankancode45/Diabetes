@@ -1,4 +1,5 @@
 # Diabetes
+# Project WebSite - https://diabetes-dpok.onrender.com
 ML Project for Diabetes Detection 
 DATASET USED-->https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database
 ![WhatsApp Image 2026-01-16 at 6 46 13 PM](https://github.com/user-attachments/assets/e54677b3-0e7c-4ad7-accc-6ceb1cc68d61)
