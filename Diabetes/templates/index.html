@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Detection System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Diabetes Detection System</h2>
+        <p class="subtitle">Enter your health metrics for analysis</p>
+        
+        <form method="POST">
+            <label>Pregnancies</label>
+            <input type="number" name="Pregnancies" min="0" step="1" required>
+            
+            <label>Glucose (mg/dL)</label>
+            <input type="number" name="Glucose" min="0" step="any" required>
+            
+            <label>Blood Pressure (mm Hg)</label>
+            <input type="number" name="BloodPressure" min="0" step="any" required>
+            
+            <label>Skin Thickness (mm)</label>
+            <input type="number" name="SkinThickness" min="0" step="any" required>
+            
+            <label>Insulin (μU/mL)</label>
+            <input type="number" name="Insulin" min="0" step="any" required>
+            
+            <label>BMI (Body Mass Index)</label>
+            <input type="number" name="BMI" min="0" step="any" required>
+            
+            <label>Diabetes Pedigree Function</label>
+            <input type="number" name="DiabetesPedigreeFunction" min="0" step="any" required>
+            
+            <label>Age (years)</label>
+            <input type="number" name="Age" min="0" step="1" required>
+            
+            <button type="submit">Analyze Results</button>
+        </form>
+
+        {% if prediction %}
+            <hr>
+            
+            {% if prediction == "Diabetes Detected" %}
+                <div class="result detected">
+                    <h3>{{ prediction }}</h3>
+                    <p>{{ probability }}</p>
+                </div>
+
+                <div class="section">
+                    <h4>Health Cautions</h4>
+                    <ul>
+                        <li>Monitor blood sugar levels regularly</li>
+                        <li>Avoid sugary and processed foods</li>
+                        <li>Do not skip meals</li>
+                        <li>Reduce stress and get proper sleep</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h4>Recommended Diet</h4>
+                    <ul>
+                        <li>Green vegetables (spinach, broccoli)</li>
+                        <li>Whole grains (brown rice, oats)</li>
+                        <li>Lean proteins (eggs, fish, pulses)</li>
+                        <li>Low sugar fruits (apple, berries)</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h4>Exercise & Physical Activity</h4>
+                    <ul>
+                        <li>30 minutes walking daily</li>
+                        <li>Light jogging or cycling</li>
+                        <li>Yoga and stretching</li>
+                        <li>Gym: light cardio with moderate weights</li>
+                    </ul>
+                </div>
+
+                <div class="note">
+                    <p><strong>Important:</strong> Always consult a healthcare professional before making major lifestyle changes.</p>
+                </div>
+
+            {% else %}
+                <div class="result not-detected">
+                    <h3>{{ prediction }}</h3>
+                    <p>{{ probability }}</p>
+                </div>
+
+                <div class="congrats">
+                    <h4>Congratulations!</h4>
+                    <p>Your health indicators look good.</p>
+                </div>
+
+                <div class="section">
+                    <h4>Maintain a Healthy Lifestyle</h4>
+                    <ul>
+                        <li>Continue balanced diet</li>
+                        <li>Exercise at least 3-4 days a week</li>
+                        <li>Avoid excessive sugar intake</li>
+                        <li>Regular health checkups</li>
+                    </ul>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>
